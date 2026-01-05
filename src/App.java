@@ -1,6 +1,6 @@
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import javax.swing.*;
 
 public class App {
 
@@ -12,7 +12,7 @@ public class App {
         // create a list of top 5 things
         // --- TO DO: Change to your own list ---
         String[] top5 = {
-            "1. Coding",
+            "1. Theater",
             "2. Music",
             "3. Movies",
             "4. Sports",
