@@ -16,8 +16,8 @@ public class App {
         String[] top5 = {
             "1. Guitar",
             "2. Movies",
-            "3. Games",
-            "4. Travel",
+            "3. Travel",
+            "4. Games",
             "5. Friends"
         };
 
