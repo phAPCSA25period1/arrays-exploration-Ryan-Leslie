@@ -5,18 +5,20 @@ import javax.swing.*;
 public class App {
 
     // variable to keep track of current index in the list
-    // --- TO DO: why is this static? ---
+    // --- TO DO: why is this static? --- The currentIndex variable is static because static variables
+    // belong to the class itself rather than to any specific instance of the class, allowing them to be
+    // shared across all instances and accessed without creating an instance of the class. (completed)
     private static int currentIndex = 0;
 
     public static void main(String[] args) throws Exception {
         // create a list of top 5 things
-        // --- TO DO: Change to your own list ---
+        // --- TO DO: Change to your own list --- (completed)
         String[] top5 = {
-            "1. Theater",
-            "2. Music",
-            "3. Movies",
-            "4. Sports",
-            "5. Travel"
+            "1. Guitar",
+            "2. Movies",
+            "3. Games",
+            "4. Travel",
+            "5. Friends"
         };
 
          // A JFrame is a window where we can design our UI
@@ -27,7 +29,17 @@ public class App {
         // create a Button and a Label
         JButton nextButton = new JButton("Next");
         JLabel outputLabel = new JLabel();
-        // --- TO DO: create a back button, format, and add it to the frame ---
+        // --- TO DO: create a back button, format, and add it to the frame --- (completed)
+        JButton backButton = new JButton("Back");
+        JLabel outputLabel2 = new JLabel();
+
+        backButton.setBounds(250, 200, 100, 50);
+        outputLabel2.setBounds(250,100,200,50);
+        outputLabel2.setFont(new Font("Arial", Font.PLAIN, 32));
+        outputLabel2.setForeground(Color.RED);
+
+        frame.add(backButton);
+        frame.add(outputLabel);
 
         // place and size for components
         // setBounds(x position, y position, width, height)
@@ -49,10 +61,23 @@ public class App {
             currentIndex = getNextIndex(currentIndex, top5.length);
             outputLabel.setText(top5[currentIndex]);
         }    });
+        
+        
+        // --- TO DO: add event listener for back button --- (completed)
+        // --- TO DO: create a getPreviousIndex function, see below --- (completed)
 
-        // --- TO DO: add event listener for back button ---
-        // --- TO DO: create a getPreviousIndex function, see below ---
+        // Add event listener for back button click
+        backButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                // Update currentIndex to the previous index
+                currentIndex = getPreviousIndex(currentIndex, top5.length);
 
+                // Update the output label to display the new item
+                outputLabel.setText(top5[currentIndex]);
+            }
+        });
+
+        // --- TO DO: create a getPreviousIndex function, see below --- (completed)
 
         // make the frame visible
         frame.setVisible(true);
@@ -73,13 +98,21 @@ public class App {
             }
         }
 
-    // --- TO DO: create a getPreviousIndex function ---
+    // --- TO DO: create a getPreviousIndex function --- (Completed)
     /**
      *  find the next index in the list
      * @param currentIndex
      * @param listLength
      * @return previous index
      */
+
+    public static int getPreviousIndex(int currentIndex, int listLength) {
+        if (currentIndex == 0) {
+            return listLength - 1; // wrap around to the end
+        }
+        else {
+            return currentIndex - 1; // move to the previous index
+        }
+    }
     
 }
-
